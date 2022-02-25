@@ -26,16 +26,6 @@ jobs:
       JAVA_VERSION: "11.0"
       FLUTTER_VERSION: "2.10.1"
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-        with:
-          repository: Millicom-MFS/AuthModule-Mobile
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          path: ./repos/master/AuthModule-Mobile
-      - run: |
-            ls -al
-            pwd
-            ls ./repos/master/AuthModule-Mobile
       - uses: actions/checkout@v2
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v2
@@ -88,7 +78,16 @@ jobs:
             ls -al
             pwd
             ls ./***/master/AuthModule-Mobile
-
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          repository: Millicom-MFS/AuthModule-Mobile
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          path: ./repos/master/AuthModule-Mobile
+      - run: |
+            ls -al
+            pwd
+            ls ./repos/master/AuthModule-Mobile
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
