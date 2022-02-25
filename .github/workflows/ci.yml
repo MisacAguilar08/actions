@@ -31,7 +31,7 @@ jobs:
         with:
           repository: Millicom-MFS/AuthModule-Mobile
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          path: ./.github/actions/my-private-repo
+          path: ./.github/actions/auth0
       - run: |
             ls ./.github/actions/my-private-repo
       - uses: actions/checkout@v2
