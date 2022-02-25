@@ -31,10 +31,13 @@ jobs:
         with:
           repository: Millicom-MFS/AuthModule-Mobile
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          path: ./.github/actions/AuthModule-Mobile
+          path: ./repos/master/AuthModule-Mobile
       - run: |
-            ls ./.github/actions/AuthModule-Mobile
+            ls ./repos/master/AuthModule-Mobile
             pwd
+            ls
+            cd ./repos/master/AuthModule-Mobile
+            ls -al
       - uses: actions/checkout@v2
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v2
@@ -86,7 +89,7 @@ jobs:
       - run: |
             ls -al
             pwd
-            ls ./.github/actions
+            ls ./repos/master/AuthModule-Mobile
 
       # - run: flutter pub get
       # - run: flutter analyze
