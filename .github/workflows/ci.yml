@@ -66,11 +66,7 @@ jobs:
             echo 'echo $SSH_PASSPHRASE' > ~/.ssh_askpass && chmod +x ~/.ssh_askpass
             echo "$SSH_PRIVATE_KEY" | tr -d '\r' | DISPLAY=None SSH_ASKPASS=~/.ssh_askpass ssh-add - >/dev/null
             # - name: Some task that fetches dependencies
-      - uses: actions/checkout@v2
-      - name: Some task that fetches dependencies
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: ./fetch-deps.sh
+
       - uses: actions/setup-java@v2
         with:
           distribution: "zulu"
