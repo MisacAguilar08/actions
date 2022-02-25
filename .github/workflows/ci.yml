@@ -26,6 +26,13 @@ jobs:
       JAVA_VERSION: "11.0"
       FLUTTER_VERSION: "2.10.1"
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          repository: Millicom-MFS/AuthModule-Mobile
+          ref: v1.0
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          path: ./.github/actions/my-private-repo
       - uses: actions/checkout@v2
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v2
