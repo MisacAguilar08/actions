@@ -33,10 +33,11 @@ jobs:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           path: ./repos/master/AuthModule-Mobile
       - run: |
+            pwd
             ls ./repos/master/AuthModule-Mobile
             pwd
-            ls
             cd ./repos/master/AuthModule-Mobile
+            pwd
             ls -al
       - uses: actions/checkout@v2
       # - name: Install SSH key
