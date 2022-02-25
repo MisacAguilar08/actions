@@ -54,7 +54,7 @@ jobs:
       # - name: Some task that fetches dependencies
       #   env:
       #     SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        # run: ./fetch-deps.sh
+      #   run: ./fetch-deps.sh
       - name: Setup SSH passphrase
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -65,9 +65,6 @@ jobs:
             echo '#!/bin/sh' > ~/.ssh_askpass
             echo 'echo $SSH_PASSPHRASE' > ~/.ssh_askpass && chmod +x ~/.ssh_askpass
             echo "$SSH_PRIVATE_KEY" | tr -d '\r' | DISPLAY=None SSH_ASKPASS=~/.ssh_askpass ssh-add - >/dev/null
-
-    # Debug print out the added identities. This will prove SSH_AUTH_SOCK
-    # is persisted across job steps
       - name: Print ssh-add identities
         runs: ssh-add -l
       - uses: actions/setup-java@v2
