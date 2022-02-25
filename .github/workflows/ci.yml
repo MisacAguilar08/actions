@@ -82,6 +82,9 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: "2.10.1"
+      - run: |
+            ls -al
+            pwd
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
