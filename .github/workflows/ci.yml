@@ -45,16 +45,30 @@ jobs:
       #     private-key: ${{ secrets.SSH_PRIVATE_KEY_AUTH0 }}
       # - name: Clone repository
       #   run: git clone git@github.com:Millicom-MFS/AuthModule-Mobile.git
-      - name: Setup SSH Keys and known_hosts
+      # - name: Setup SSH Keys and known_hosts
+      #   env:
+      #     SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      #   run: |
+      #       ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+      #       ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+      # - name: Some task that fetches dependencies
+      #   env:
+      #     SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      #   run: ./fetch-deps.sh
+      - name: Setup SSH passphrase
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SSH_PASSPHRASE: ${{secrets.SSH_PASSPHRASE}}
+          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
         run: |
-            ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-            ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-      - name: Some task that fetches dependencies
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: ./fetch-deps.sh
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          echo '#!/bin/sh' > ~/.ssh_askpass
+          echo 'echo $SSH_PASSPHRASE' > ~/.ssh_askpass && chmod +x ~/.ssh_askpass
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' | DISPLAY=None SSH_ASKPASS=~/.ssh_askpass ssh-add - >/dev/null
+
+    # Debug print out the added identities. This will prove SSH_AUTH_SOCK
+    # is persisted across job steps
+      - name: Print ssh-add identities
+        runs: ssh-add -l
       - uses: actions/setup-java@v2
         with:
           distribution: "zulu"
