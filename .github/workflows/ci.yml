@@ -32,8 +32,6 @@ jobs:
           repository: Millicom-MFS/AuthModule-Mobile
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           path: ./.github/actions/my-private-repo
-      - name: Run my action
-        uses: ./.github/actions/my-private-repo/my-action
       - uses: actions/checkout@v2
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v2
