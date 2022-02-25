@@ -31,9 +31,9 @@ jobs:
         with:
           repository: Millicom-MFS/AuthModule-Mobile
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          path: ./.github/actions/auth0
+          path: ./.github/actions/AuthModule-Mobile
       - run: |
-            ls ./.github/actions/auth0
+            ls ./.github/actions/AuthModule-Mobile
       - uses: actions/checkout@v2
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v2
@@ -85,16 +85,22 @@ jobs:
       - run: |
             ls -al
             pwd
-      - run: flutter pub get
-      - run: flutter analyze
-      - run: flutter test
-      - run: flutter build apk --release
+            ls ./.***/actions/AuthModule-Mobile
+            cd ./.***/actions
+            ls -al
+      # - run: flutter pub get
+      # - run: flutter analyze
+      # - run: flutter test
+      # - run: flutter build apk --release
+      
       #- run: flutter build appbundle
-      - name: Create a Release APK
-        uses: actions/upload-artifact@v1
-        with:
-          name: release-apk
-          path: build/app/outputs/apk/release/app-release.apk
+
+      # - name: Create a Release APK
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: release-apk
+      #     path: build/app/outputs/apk/release/app-release.apk
+
         #uses: ncipollo/release-action@v1
         #with:
         #artifacts: "build/app/outputs/apk/release/*.apk"
