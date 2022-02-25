@@ -41,7 +41,9 @@ dependencies:
 
 dependency_overrides:
   auth0:
-    path: ./.github/actions/AuthModule-Mobile
+    path: ./repos/master/AuthModule-Mobile
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

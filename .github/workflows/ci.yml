@@ -36,10 +36,6 @@ jobs:
             ls -al
             pwd
             ls ./repos/master/AuthModule-Mobile
-            pwd
-            cd ./repos/master/AuthModule-Mobile
-            pwd
-            ls -al
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v2
       #   with:
@@ -91,23 +87,19 @@ jobs:
             ls -al
             pwd
             ls ./***/master/AuthModule-Mobile
-            pwd
-            cd ./repos/master/AuthModule-Mobile
-            pwd
-            ls -al
 
-      # - run: flutter pub get
-      # - run: flutter analyze
-      # - run: flutter test
-      # - run: flutter build apk --release
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+      - run: flutter build apk --release
 
       #- run: flutter build appbundle
 
-      # - name: Create a Release APK
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: release-apk
-      #     path: build/app/outputs/apk/release/app-release.apk
+      - name: Create a Release APK
+        uses: actions/upload-artifact@v1
+        with:
+          name: release-apk
+          path: build/app/outputs/apk/release/app-release.apk
 
         #uses: ncipollo/release-action@v1
         #with:
