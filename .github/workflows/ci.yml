@@ -33,7 +33,7 @@ jobs:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           path: ./.github/actions/auth0
       - run: |
-            ls ./.github/actions/my-private-repo
+            ls ./.github/actions/auth0
       - uses: actions/checkout@v2
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v2
