@@ -36,6 +36,7 @@ jobs:
             ls -al
             pwd
             ls ./repos/master/AuthModule-Mobile
+      - uses: actions/checkout@v2
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v2
       #   with:
