@@ -34,6 +34,7 @@ jobs:
           path: ./.github/actions/AuthModule-Mobile
       - run: |
             ls ./.github/actions/AuthModule-Mobile
+            pwd
       - uses: actions/checkout@v2
       # - name: Install SSH key
       #   uses: shimataro/ssh-key-action@v2
