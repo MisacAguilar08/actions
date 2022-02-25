@@ -33,6 +33,7 @@ jobs:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           path: ./repos/master/AuthModule-Mobile
       - run: |
+            ls -al
             pwd
             ls ./repos/master/AuthModule-Mobile
             pwd
@@ -91,6 +92,10 @@ jobs:
             ls -al
             pwd
             ls ./repos/master/AuthModule-Mobile
+            pwd
+            cd ./repos/master/AuthModule-Mobile
+            pwd
+            ls -al
 
       # - run: flutter pub get
       # - run: flutter analyze
